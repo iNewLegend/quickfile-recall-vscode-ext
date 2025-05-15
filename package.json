@@ -1,0 +1,54 @@
+{
+  "name": "quickfile-recall",
+  "displayName": "QuickFile Recall",
+  "description": "Forces openPreviousEditorFromHistory to open in command palette mode",
+  "version": "0.0.2",
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "activationEvents": [
+    "onCommand:custom.openPreviousEditorFromHistory"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "custom.openPreviousEditorFromHistory",
+        "title": "QuickFile Recall: Open Previous File"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "custom.openPreviousEditorFromHistory",
+        "key": "cmd+e",
+        "mac": "cmd+e",
+        "win": "ctrl+e",
+        "linux": "ctrl+e",
+        "when": "editorTextFocus"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "tsc -p ./",
+    "compile": "tsc -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "@types/vscode": "^1.70.0",
+    "typescript": "^4.0.0"
+  },
+  "author": "Leonid Vinikov <https://github.com/inewlegend> & AI Assistant",
+  "contributors": [
+    {
+      "name": "Leonid Vinikov",
+      "url": "https://github.com/inewlegend"
+    },
+    {
+      "name": "AI Assistant"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iNewLegend/quickfile-recall-vscode-ext.git"
+  }
+}

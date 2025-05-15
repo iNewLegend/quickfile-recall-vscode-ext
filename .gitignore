@@ -1,3 +1,4 @@
 .qodo
 SESSION_HISTORY.md
 out/
+node_modules/
