@@ -4,7 +4,7 @@
   "displayName": "QuickFile Recall",
   "icon": "assets/icon.png",
   "description": "Quickly reopen previously used files from your editor history with a searchable, timestamped list. Boost your productivity and never lose track of your workflow in VS Code.",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "engines": {
     "vscode": "^1.70.0"
   },
