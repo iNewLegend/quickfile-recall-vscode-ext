@@ -1,5 +1,6 @@
 import * as vscode from "vscode";
 import * as path from "path"; // Import path for handling file paths
+import { showKeybindingInfoMessage } from "./keybinding";
 
 // Define the structure for history entries
 interface HistoryEntry {
@@ -12,10 +13,10 @@ interface HistoryQuickPickItem extends vscode.QuickPickItem {
   uri: vscode.Uri;
 }
 
-// Key for storing history in global state
+// Key for storing history in workspace state (was global state)
 const HISTORY_STORAGE_KEY = "customEditorHistory";
 
-// Key for storing open files on exit
+// Key for storing open files on exit (keep as workspace state)
 const OPEN_FILES_STORAGE_KEY = "customOpenFilesOnExit";
 
 // Variable to hold the extension context
@@ -44,13 +45,13 @@ function formatTimestamp(timestamp: number): string {
   return `${hours}:${minutes} ${year}-${month}-${day}`;
 }
 
-// Helper function to load history from global state
+// Helper function to load history from workspace state
 function loadHistory() {
   if (!extensionContext) return;
 
   // Load data expecting array of { uriString: string; timestamp: number }
   const storedData =
-    extensionContext.globalState.get<
+    extensionContext.workspaceState.get<
       { uriString: string; timestamp: number }[]
     >(HISTORY_STORAGE_KEY);
 
@@ -112,7 +113,7 @@ function loadHistory() {
   );
 }
 
-// Helper function to save the current state of editorHistory to global state
+// Helper function to save the current state of editorHistory to workspace state
 async function saveHistoryState() {
   if (!extensionContext) {
     return;
@@ -125,7 +126,7 @@ async function saveHistoryState() {
       timestamp: entry.timestamp,
     }));
 
-    await extensionContext.globalState.update(
+    await extensionContext.workspaceState.update(
       HISTORY_STORAGE_KEY,
       historyToStore
     );
@@ -134,7 +135,7 @@ async function saveHistoryState() {
   }
 }
 
-// Helper function to save OPEN FILES to global state (used in deactivate)
+// Helper function to save OPEN FILES to workspace state (used in deactivate)
 function saveOpenFilesState() {
   if (!extensionContext) {
     console.warn(
@@ -148,9 +149,12 @@ function saveOpenFilesState() {
       .filter((doc) => doc.uri.scheme === "file" && !doc.isClosed) // Only files, ensure not closed
       .map((doc) => doc.uri.toString());
 
-    extensionContext.globalState.update(OPEN_FILES_STORAGE_KEY, openFileUris);
+    extensionContext.workspaceState.update(
+      OPEN_FILES_STORAGE_KEY,
+      openFileUris
+    );
     console.log(
-      `Saved ${openFileUris.length} open files state to global state.`
+      `Saved ${openFileUris.length} open files state to workspace state.`
     );
   } catch (error) {
     console.error("Error saving open files state:", error);
@@ -347,6 +351,8 @@ export function activate(context: vscode.ExtensionContext) {
   );
 
   context.subscriptions.push(disposable, editorChangeListener);
+  // After registering command, show keybinding info message
+  showKeybindingInfoMessage();
 }
 
 export async function deactivate() {

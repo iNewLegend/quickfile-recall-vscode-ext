@@ -1,4 +1,8 @@
 .qodo
-SESSION_HISTORY.md
+.DS_Store
+
+*.vsix
+
+
 out/
 node_modules/

@@ -1,13 +1,15 @@
 {
   "name": "quickfile-recall",
+  "publisher": "inewlegend",
   "displayName": "QuickFile Recall",
-  "description": "Forces openPreviousEditorFromHistory to open in command palette mode",
-  "version": "0.0.2",
+  "description": "Quickly reopen previously used files from your editor history with a searchable, timestamped list. Boost your productivity and never lose track of your workflow in VS Code.",
+  "version": "0.0.3",
   "engines": {
     "vscode": "^1.70.0"
   },
   "activationEvents": [
-    "onCommand:custom.openPreviousEditorFromHistory"
+    "onCommand:custom.openPreviousEditorFromHistory",
+    "onStartupFinished"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -22,15 +24,14 @@
         "command": "custom.openPreviousEditorFromHistory",
         "key": "cmd+e",
         "mac": "cmd+e",
-        "win": "ctrl+e",
-        "linux": "ctrl+e",
-        "when": "editorTextFocus"
+        "win": "ctrl+alt+e",
+        "linux": "ctrl+alt+e"
       }
     ]
   },
   "scripts": {
-    "vscode:prepublish": "tsc -p ./",
-    "compile": "tsc -p ./"
+    "vscode:tsc": "tsc -p ./",
+    "vscode:vsix": "vsce package"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
