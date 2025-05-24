@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/image.png" alt="QuickFile Recall" />
+</p>
+
 # QuickFile Recall
 
 QuickFile Recall is a Visual Studio Code extension that helps you quickly reopen previously opened files from your editor history. It provides a searchable, timestamped list of your recent files, ensuring you never lose track of your workflow—even across sessions.
@@ -12,7 +16,7 @@ QuickFile Recall is a Visual Studio Code extension that helps you quickly reopen
 ## Usage
 
 1. Open files as usual in VS Code.
-2. Press `CMD+E` (Mac) or `CTRL+ALT+E` (Win/Linux) to quickly open QuickFile Recall, or use the Command Palette (`Cmd+Shift+P`) and run:
+2. Press `CMD+E` (Mac) or `CTRL+E` (Win/Linux) to quickly open QuickFile Recall, or use the Command Palette (`Cmd+Shift+P`) and run:
    ```
    QuickFile Recall: Open Previous File
    ```

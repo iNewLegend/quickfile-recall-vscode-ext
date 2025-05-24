@@ -3,7 +3,7 @@ import * as vscode from "vscode";
 
 const COMMAND_ID = "custom.openPreviousEditorFromHistory";
 const MAC_KEY = "cmd+e";
-const WIN_LINUX_KEY = "ctrl+alt+e";
+const WIN_LINUX_KEY = "ctrl+e";
 
 export async function showKeybindingInfoMessage() {
   // Get all keybindings for the command
@@ -24,7 +24,7 @@ export async function showKeybindingInfoMessage() {
   }
 
   const picked = await vscode.window.showInformationMessage(
-    "To use QuickFile Recall with CMD+E (Mac) or CTRL+ALT+E (Win/Linux), you may need to override the default VS Code shortcut. Would you like to open Keyboard Shortcuts to set it now?",
+    "To use QuickFile Recall with CMD+E (Mac) or CTRL+E (Win/Linux), you may need to override the default VS Code shortcut. Would you like to open Keyboard Shortcuts to set it now?",
     "Open Keyboard Shortcuts",
     "Show Instructions",
     "Dismiss"
@@ -35,11 +35,11 @@ export async function showKeybindingInfoMessage() {
       "workbench.action.openGlobalKeybindings"
     );
     vscode.window.showInformationMessage(
-      'Search for "QuickFile Recall: Open Previous File" and set the keybinding to CMD+E (Mac) or CTRL+ALT+E (Win/Linux).'
+      'Search for "QuickFile Recall: Open Previous File" and set the keybinding to CMD+E (Mac) or CTRL+E (Win/Linux).'
     );
   } else if (picked === "Show Instructions") {
     vscode.window.showInformationMessage(
-      'To set CMD+E (Mac) or CTRL+ALT+E (Win/Linux) for QuickFile Recall: 1) Open Keyboard Shortcuts (CMD+K, CMD+S), 2) Search for "QuickFile Recall: Open Previous File", 3) Set the keybinding to CMD+E (Mac) or CTRL+ALT+E (Win/Linux).'
+      'To set CMD+E (Mac) or CTRL+E (Win/Linux) for QuickFile Recall: 1) Open Keyboard Shortcuts (CMD+K, CMD+S), 2) Search for "QuickFile Recall: Open Previous File", 3) Set the keybinding to CMD+E (Mac) or CTRL+E (Win/Linux).'
     );
   }
 }

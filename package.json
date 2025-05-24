@@ -2,6 +2,7 @@
   "name": "quickfile-recall",
   "publisher": "inewlegend",
   "displayName": "QuickFile Recall",
+  "icon": "assets/icon.png",
   "description": "Quickly reopen previously used files from your editor history with a searchable, timestamped list. Boost your productivity and never lose track of your workflow in VS Code.",
   "version": "0.0.3",
   "engines": {
@@ -24,8 +25,8 @@
         "command": "custom.openPreviousEditorFromHistory",
         "key": "cmd+e",
         "mac": "cmd+e",
-        "win": "ctrl+alt+e",
-        "linux": "ctrl+alt+e"
+        "win": "ctrl+e",
+        "linux": "ctrl+e"
       }
     ]
   },
